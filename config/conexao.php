@@ -2,19 +2,19 @@
     class Conexao {
         private static $instancia = null;
 
-        public function getConexao() {
+        public static function getConexao() {
             if(self::$instancia === null) {
                 try {
                     self::$instancia = new PDO(
-                        "mysql:host=root;dbname=crud_php;charset=utf-8",
-                        "crud_php",
+                        "mysql:host=localhost;dbname=crud_php;charset=utf8",
+                        "root",
                         "",
                     );
                     self::$instancia->setAttribute(
                         PDO::ATTR_ERRMODE,
                         PDO::ERRMODE_EXCEPTION,
                     );
-                    self::$instancia->exec("SET time_zone = 'America/Sao_Paulo'");
+                    self::$instancia->exec("SET time_zone = 'America/Sao_paulo'");
                 }
                 catch (PDOException $e){
                     error_log("Erro de conexao: " . $e->getMessage());
