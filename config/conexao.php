@@ -1,4 +1,6 @@
 <?php
+    date_default_timezone_set('America/Sao_paulo');
+
     class Conexao {
         private static $instancia = null;
 
@@ -14,13 +16,13 @@
                         PDO::ATTR_ERRMODE,
                         PDO::ERRMODE_EXCEPTION,
                     );
-                    self::$instancia->exec("SET time_zone = 'America/Sao_paulo'");
                 }
                 catch (PDOException $e){
                     error_log("Erro de conexao: " . $e->getMessage());
                     die("Erro ao conectar no banco de dados");
                 }
             }
+            // Retorna a conexão PDO
             return self::$instancia; 
         }
     }

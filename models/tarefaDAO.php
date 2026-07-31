@@ -30,4 +30,30 @@
                 throw $e;
             }
         }
+
+        public function lerTodasTarefas() {
+            try {
+                $sql = "SELECT * FROM tb_tarefas";
+                $stmt = $this->pdo->query($sql);
+                $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $tarefas = [];
+
+                while($dados) {
+                    $tarefa = new Tarefa(
+                        $dados['nome'],
+                        $dados['descricao'],
+                        $dados['tipo'],
+                        $dados['dataTermino'],
+                        $dados['dataCriado']
+                    );
+                    $tarefa->setId($dados['id']);
+                    $tarefas[] = $tarefa;
+                }
+                return $tarefas;
+            }
+            catch (Exception $e) {
+                throw $e;
+            }
+        }
     };
