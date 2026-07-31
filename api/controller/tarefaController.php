@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . "/models/tarefaDAO.php";
+    require_once __DIR__ . "/../models/tarefaDAO.php";
 
     class TarefaController {
         private $dao;
@@ -10,6 +10,6 @@
 
         public function lerTodasTarefas() {
             $tarefas = $this->dao->lerTodasTarefas();
-            return json_encode($tarefas);
+            echo json_encode($tarefas);
         }
     }

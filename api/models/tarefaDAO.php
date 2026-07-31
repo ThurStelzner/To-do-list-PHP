@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . "/../config/conexao.php";   
+    require_once __DIR__ . "/../../config/conexao.php";   
     require_once __DIR__ . "/../models/tarefa.php";
 
     class TarefaDAO {
@@ -33,19 +33,18 @@
 
         public function lerTodasTarefas() {
             try {
-                $sql = "SELECT * FROM tb_tarefas";
+                $sql = "SELECT * FROM tb_tarefas ORDER BY ds_tipo";
                 $stmt = $this->pdo->query($sql);
-                $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 $tarefas = [];
 
-                while($dados) {
+                while($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $tarefa = new Tarefa(
-                        $dados['nome'],
-                        $dados['descricao'],
-                        $dados['tipo'],
-                        $dados['dataTermino'],
-                        $dados['dataCriado']
+                        $dados['nm_nome'],
+                        $dados['ds_descricao'],
+                        $dados['ds_tipo'],
+                        $dados['dt_termino'],
+                        $dados['dt_criacao']
                     );
                     $tarefa->setId($dados['id']);
                     $tarefas[] = $tarefa;
