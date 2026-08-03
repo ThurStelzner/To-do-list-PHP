@@ -28,4 +28,7 @@
         if($metodo === "GET") {
             $controller->lerTodasTarefas();
         }
+        if($metodo === "POST") {
+            $controller->cadastrarTarefa();
+        }
     };
