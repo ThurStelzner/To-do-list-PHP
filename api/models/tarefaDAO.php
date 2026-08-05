@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ . "/../../config/conexao.php";   
-    require_once __DIR__ . "/../models/tarefa.php";
+    require_once __DIR__ . "/../models/tarefa.php";z
 
     class TarefaDAO {
         private $pdo;
@@ -11,6 +11,20 @@
 
         public function cadastrarTarefa(Tarefa $tarefa) {
             try {
+                $tipo = $tarefa->getTipo();
+                switch($tipo) {
+                    case 0:
+                        $tipo = 'basico';
+                        break;
+                    case 1:
+                        $tipo = 'mediano';
+                        break;
+                    case 2:
+                        $tipo = 'urgente';
+                        break;
+                    default:
+                        $tipo = null;
+                }
                 $sql = "INSERT INTO 
                         tb_tarefas(nm_nome, ds_descricao, ds_tipo, dt_termino, dt_criacao)
                         VALUES (?,?,?,?,?)";
@@ -18,7 +32,7 @@
                 $stmt->execute([
                     $tarefa->getNome(),
                     $tarefa->getDescricao(),
-                    $tarefa->getTipo(),
+                    $tipo,
                     $tarefa->getDataTermino(),
                     $tarefa->getDataCriado()
                 ]);

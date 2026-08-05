@@ -15,17 +15,17 @@
 
         public function cadastrarTarefa() {
             try {
-                $dados = json_decode(file_get_contents('php://input', true));
+                $dados = json_decode(file_get_contents('php://input'), true);
                 if(!$dados) {
                     throw new Exception("Dados de requisição inválidos.");
                 }
 
                 $tarefa = new Tarefa(
-                    $dados['nome'],
-                    $dados['descricao'],
-                    $dados['tipo'],
-                    $dados['dataTermino'],
-                    date("c")
+                    $dados['nome'] ?? "",
+                    $dados['descricao'] ?? "",
+                    $dados['tipo'] ?? "",
+                    $dados['dataTermino'] ?? "",
+                    $dados['dataCriado'] ?? ""
                 );
 
                 $novaTarefa = $this->dao->cadastrarTarefa($tarefa);

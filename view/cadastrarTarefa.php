@@ -14,9 +14,9 @@
             <option value="2">Urgente</option>
         </select>
         <label for="dataTermino">Tarefa a ser realisada até</label>
-        <input type="date" id="dataTermino" name="dataTermino" require>
+        <input type="datetime-local" id="dataTermino" name="dataTermino" require>
         <button type="submit">Cadastrar</button>
     </form>
-    <script src="view/js/index.js"></script>
+    <script src="js/index.js"></script>
 
 <?php require __DIR__ . "/footer.html" ?>

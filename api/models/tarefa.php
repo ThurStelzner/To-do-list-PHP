@@ -8,11 +8,12 @@
         private $dataCriado;
 
         public function __construct($nome, $descricao, $tipo, $dataTermino, $dataCriado, $id=null){
-            $this->nome = $nome;
-            $this->descricao = $descricao;
-            $this->tipo = $tipo;
-            $this->dataTermino = $dataTermino;
-            $this->dataCriado = $dataCriado;
+            $this->setNome($nome);
+            $this->setDescrição($descricao);
+            $this->setTipo($tipo);
+            $this->setDataTermino($dataTermino);
+            $this->setDataCriado($dataCriado);
+            $this->setId($id);
         }
 
         public function setId($id) {
