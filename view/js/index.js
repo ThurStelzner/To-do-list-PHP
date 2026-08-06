@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const descricaoTarefa = document.getElementById("descricao");
     const tipoTarefa = document.getElementById("tipo");
     const dataTarefaTermino = document.getElementById("dataTermino");
+    const formEditar = document.getElementById("formEditar");
     const hoje =  new Date();
 
     async function lerTodasTarefas() {
@@ -42,7 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.id = (tarefa.id);
                     modal.innerHTML = `
                         <button commandFor='${tarefa.id}' command='close'>X</button>
-                        Adicionar edicao e exclusão
+                        <button onclick='editarTarefa()'>Editar Tarefa</button>
+                        Adicionar exclusão
                     `
                     listaTarefas.appendChild(modal);
                 })
@@ -68,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(JSON.stringify(tarefa))
 
             const url = URL_BASE_API;
-            const method = 'POST';
+            const method = tarefaId ? 'PUT' : 'POST';
 
             try {
                 const response = await fetch(url, {
