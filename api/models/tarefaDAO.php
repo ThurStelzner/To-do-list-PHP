@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__ . "/../../config/conexao.php";   
-    require_once __DIR__ . "/../models/tarefa.php";z
+    require_once __DIR__ . "/../models/tarefa.php";
+
+    date_default_timezone_set('America/Sao_Paulo');
 
     class TarefaDAO {
         private $pdo;
@@ -34,7 +36,7 @@
                     $tarefa->getDescricao(),
                     $tipo,
                     $tarefa->getDataTermino(),
-                    $tarefa->getDataCriado()
+                    date("Y-m-d H:i:s")
                 ]);
                 $id = $this->pdo->lastInsertId();
                 $tarefa->setId($id);

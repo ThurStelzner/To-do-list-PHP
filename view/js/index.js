@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const tarefas = await response.json();
             console.log(tarefas)
 
-            // Limpo a tabela antes de inserir algo
             if(listaTarefas){
+                // Limpo a tabela antes de inserir algo
                 listaTarefas.innerHTML = '';
                 tarefas.forEach(tarefa => {
                     const card = document.createElement('div');
@@ -30,19 +30,31 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h3>${tarefa.nome}</h3>
                         <span>${tarefa.descricao}</span>
                         <strong>${tarefa.tipo}</strong>
-                        <p>${tarefa.dataTermino}</p>
+                        <p>Até: ${tarefa.dataTermino}</p>
                         <p>Criado em: ${tarefa.dataCriado}</p>
-                        <button>...</button>
+                        <button commandFor='${tarefa.id}' command='show-modal'>...</button>
                     `
-                    listaTarefas.appendChild(card)
+                    listaTarefas.appendChild(card);
                 });
+                tarefas.forEach(tarefa => {
+                    const modal = document.createElement('dialog');
+                    modal.classList.add('modal');
+                    modal.id = (tarefa.id);
+                    modal.innerHTML = `
+                        <button commandFor='${tarefa.id}' command='close'>X</button>
+                        Adicionar edicao e exclusão
+                    `
+                    listaTarefas.appendChild(modal);
+                })
             }
         }
         catch(error) {
             console.error("Erro: ", error);
         };
     };
+
     lerTodasTarefas()
+
     if(formTarefas) {
         formTarefas.addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -78,5 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Erro crítico");
             }
         })
-    }
+    };
 });
+
