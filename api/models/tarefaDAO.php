@@ -16,7 +16,7 @@
                 $tipo = $tarefa->getTipo();
                 switch($tipo) {
                     case 0:
-                        $tipo = 'basico';
+                        $tipo = 'básico';
                         break;
                     case 1:
                         $tipo = 'mediano';

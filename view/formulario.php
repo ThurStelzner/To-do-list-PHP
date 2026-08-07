@@ -3,6 +3,7 @@
 ?>
 
     <form id="formTarefas">
+        <input type="hidden" id="tarefaId">
         <label for="nome">Nome da tarefa</label>
         <input type="text" name="nome" id="nome" require>
         <label for="descricao">Descreva a tarefa</label>

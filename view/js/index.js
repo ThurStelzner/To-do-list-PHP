@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const URL_BASE_API = "/api/tarefas";
-
+    
+    const tarefaIdInput = document.getElementById("tarefaId");
     const listaTarefas = document.getElementById("listaTarefas");
     const formTarefas = document.getElementById("formTarefas");
     const nomeTarefa = document.getElementById("nome");
@@ -8,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tipoTarefa = document.getElementById("tipo");
     const dataTarefaTermino = document.getElementById("dataTermino");
     const formEditar = document.getElementById("formEditar");
-    const hoje =  new Date();
 
     async function lerTodasTarefas() {
         try {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.id = (tarefa.id);
                     modal.innerHTML = `
                         <button commandFor='${tarefa.id}' command='close'>X</button>
-                        <button onclick='editarTarefa()'>Editar Tarefa</button>
+                        <button onclick="window.location.href='/view/formulario.php/${tarefa.id}'">Editar Tarefa</button>
                         Adicionar exclusão
                     `
                     listaTarefas.appendChild(modal);
@@ -67,9 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 dataTermino: dataTarefaTermino.value
             };
 
-            console.log(JSON.stringify(tarefa))
-
-            const url = URL_BASE_API;
+            const tarefaId = tarefaIdInput.value;
+            const url = tarefaId ? `${URL_BASE_API}/${tarefaId}` : URL_BASE_API;
             const method = tarefaId ? 'PUT' : 'POST';
 
             try {
