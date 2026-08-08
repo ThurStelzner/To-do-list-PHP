@@ -25,10 +25,20 @@
 
     // Comparo para saber se a rotaBase foi achada
     if(strpos($uri, $rotaBase) === 0) {
+         // Extrai o ID da URL se existir
+        $partes = explode("/", trim(str_replace($rotaBase, "", $uri), "/"));
+        $id = !empty($partes[0]) ? $partes[0] : null;
         if($metodo === "GET") {
-            $controller->lerTodasTarefas();
+            if($id) {
+                $controller->lerTarefaId($id);
+            } else {
+                $controller->lerTodasTarefas();
+            }
         }
         if($metodo === "POST") {
             $controller->cadastrarTarefa();
+        }
+        if($metodo === "PUT") {
+            $controller->editarTarefa();
         }
     };

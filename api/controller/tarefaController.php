@@ -9,8 +9,23 @@
         }
 
         public function lerTodasTarefas() {
-            $dados = $this->dao->lerTodasTarefas();
-            echo json_encode($dados);
+            try {
+                $dados = $this->dao->lerTodasTarefas();
+                echo json_encode($dados);
+            }
+            catch (Exception $e) {
+                throw $e;
+            }
+        }
+
+        public function lerTarefaId($id) {
+            try {
+                $tarefa = $this->dao->lerTarefaId($id);
+                echo json_encode($tarefa);
+            }
+            catch (Exception $e) {
+                throw $e;
+            }
         }
 
         public function cadastrarTarefa() {

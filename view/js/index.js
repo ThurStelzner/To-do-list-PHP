@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const descricaoTarefa = document.getElementById("descricao");
     const tipoTarefa = document.getElementById("tipo");
     const dataTarefaTermino = document.getElementById("dataTermino");
-    const formEditar = document.getElementById("formEditar");
 
     async function lerTodasTarefas() {
         try {
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
             };
             
             const tarefas = await response.json();
-            console.log(tarefas)
 
             if(listaTarefas){
                 // Limpo a tabela antes de inserir algo
@@ -43,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.id = (tarefa.id);
                     modal.innerHTML = `
                         <button commandFor='${tarefa.id}' command='close'>X</button>
-                        <button onclick="window.location.href='/view/formulario.php/${tarefa.id}'">Editar Tarefa</button>
+                        <button onclick="window.location.href = 'view/formulario.php?id=${tarefa.id}'">Editar Tarefa</button>
                         Adicionar exclusão
-                    `
+                    `;
                     listaTarefas.appendChild(modal);
                 })
             }
@@ -77,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(tarefa)
                 })
-
+                
                 const resultado = await response.json();
 
                 if(response.ok) {

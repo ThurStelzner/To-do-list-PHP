@@ -71,4 +71,16 @@
                 throw $e;
             }
         }
+
+        public function lerTarefaId($id) {
+            $sql = "SELECT * FROM tb_tarefas WHERE id=?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$id]);
+
+            $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $tarefa = new Tarefa($dados['nm_nome'], $dados['ds_descricao'], $dados['ds_tipo'], $dados['dt_termino'], $dados['dt_criacao']);
+            $tarefa->setId($dados['id']);
+            return $tarefa;
+        }
     };
