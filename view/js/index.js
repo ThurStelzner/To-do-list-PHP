@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.innerHTML = `
                         <button commandFor='${tarefa.id}' command='close'>X</button>
                         <button onclick="window.location.href = 'view/formulario.php?id=${tarefa.id}'">Editar Tarefa</button>
-                        Adicionar exclusão
+                        <button onclick="deletarTarefa(${tarefa.id})">Excluir</button>
                     `;
                     listaTarefas.appendChild(modal);
                 })
@@ -91,5 +91,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     };
+
+    window.deletarTarefa = async (id) => {
+        if(confirm("Tem certeza que deseja excluir esta tarefa?")) {
+            try {
+                const response = await fetch(`${URL_BASE_API}/${id}`, { method: 'DELETE' });
+                if(response.ok) {
+                    lerTodasTarefas()
+                } else {
+                    const resultado = await response.json();
+                    console.error(resultado.erro);
+                }
+            }
+            catch(Error) {
+                console.log(erro);
+            }
+        }
+    }
 });
 

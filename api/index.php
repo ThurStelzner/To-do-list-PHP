@@ -41,4 +41,7 @@
         if($metodo === "PUT") {
             $controller->editarTarefa($id);
         }
+        if($metodo === "DELETE") {
+            $controller->deletarTarefa($id);
+        }
     };

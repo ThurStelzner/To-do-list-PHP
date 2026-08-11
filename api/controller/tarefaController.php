@@ -74,4 +74,14 @@
                 throw $e;
             }
         }
+
+        public function deletarTarefa($id) {
+            try {
+                $dados = $this->dao->deletarTarefa($id);
+                http_response_code(204);
+            }
+            catch (Exception $e) {
+                throw $e;
+            }
+        }
     }

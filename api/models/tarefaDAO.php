@@ -111,4 +111,15 @@
             ]);
             return $t;
         }
+
+        public function deletarTarefa($id) {
+            try{
+                $sql = "DELETE FROM tb_tarefas WHERE id = ?";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([$id]);
+            }
+            catch (Exception $e) {
+                throw $e;          
+            }
+        }
     };
