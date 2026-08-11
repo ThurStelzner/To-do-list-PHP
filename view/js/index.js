@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 tarefas.forEach(tarefa => {
                     const card = document.createElement('div');
                     card.classList.add('card');
-                    card.
                     card.innerHTML = `
                         <h3>${tarefa.nome}</h3>
                         <span>${tarefa.descricao}</span>
