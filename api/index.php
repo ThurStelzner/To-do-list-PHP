@@ -39,6 +39,6 @@
             $controller->cadastrarTarefa();
         }
         if($metodo === "PUT") {
-            $controller->editarTarefa();
+            $controller->editarTarefa($id);
         }
     };

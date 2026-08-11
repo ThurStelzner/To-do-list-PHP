@@ -75,11 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(tarefa)
                 })
-                
+
                 const resultado = await response.json();
 
                 if(response.ok) {
-                    alert("Tarefa cadastrada com sucesso!");
+                    alert(tarefaId ? "Tarefa editada com sucesso!" : "Tarefa cadastrada com sucesso!");
+                    window.location.href = "/"
                 } else {
                     alert("Ocorreu um erro na requisição: ", resultado)
                 }

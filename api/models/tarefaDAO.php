@@ -83,4 +83,32 @@
             $tarefa->setId($dados['id']);
             return $tarefa;
         }
+
+        public function editarTarefa(Tarefa $t) {
+            $tipo = $t->getTipo();
+            switch($tipo) {
+                case 0:
+                    $tipo = 'básico';
+                    break;
+                case 1:
+                    $tipo = 'mediano';
+                    break;
+                case 2:
+                    $tipo = 'urgente';
+                    break;
+                default:
+                    $tipo = null;
+            }
+            $sql = "UPDATE tb_tarefas SET nm_nome = ?, ds_descricao = ?, ds_tipo = ?, dt_termino = ?, dt_criacao = ? WHERE id = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                $t->getNome(),
+                $t->getDescricao(),
+                $tipo,
+                $t->getDataTermino(),
+                date("Y-m-d H:i:s"),
+                $t->getId()
+            ]);
+            return $t;
+        }
     };

@@ -50,4 +50,28 @@
                 throw $e;
             }
         }
+
+        public function editarTarefa($id) {
+            try {
+                $dados = json_decode(file_get_contents('php://input'), true);
+                if(!$dados) {
+                    throw new Exception("Dados de requisição inválidos.");
+                }
+
+                $tarefa = new Tarefa(
+                    $dados['nome'] ?? "",
+                    $dados['descricao'] ?? "",
+                    $dados['tipo'] ?? 0,
+                    $dados['dataTermino'] ?? "",
+                    $dados['dataCriado'] ?? ""
+                );
+
+                $tarefa->setId($id);
+
+                $tarefaEditada = $this->dao->editarTarefa($tarefa);
+                echo json_encode($tarefaEditada);
+            } catch (Exception $e) {
+                throw $e;
+            }
+        }
     }
