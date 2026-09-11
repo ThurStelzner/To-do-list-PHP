@@ -6,6 +6,7 @@
 
 :root {
     --text: #000;
+    --bg: #fff;
 }
 
 ul {
@@ -21,11 +22,12 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100dvh;
+    background-color: var(--bg);
 }
 
 header {
+    height: 60px;
     width: 100%;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,24 +35,44 @@ header {
     text-align: center;
 }
 
+header a {
+    color: var(--text);
+    padding: 5px;
+    border-radius: 20px;
+}
+
+header a:hover {
+    background-color: #0011ff1a;
+}
+
+header ul {
+    margin-top: 5px;
+}
+
+header li {
+    padding: 3px;
+}
+
 #listaTarefas {
-    width: 30rem;
-    height: 500px;
+    max-width: 600px;
+    width: 90%;
+    height: 67dvh;
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
 
-section h1 {
+h1 {
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
 
 .card {
-    width: 100%;
+    width: 98%;
     padding: 30px;
     border-radius: 10px;
-    border-left: 3px solid black;
-    background-color: rgba(0, 255, 255, 0.26);
+    border-bottom: 5px solid rgb(51, 43, 0);
+    background-color: rgba(255, 217, 0, 0.13);
     margin-top: 10px;
 }
 
@@ -76,6 +98,32 @@ section h1 {
     position: static;
     left: 270px;
     top: 70px;
+}
+
+.modal[open] {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    gap: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: -10px 10px 30px black;
+}
+
+.modal button {
+    position: relative;
+    top: -10px;
+}
+
+.modal .btn-close {
+    width: 30px;
+    position: relative;
+    top: -30px;
+    left: -30px;
 }
 
 footer {
