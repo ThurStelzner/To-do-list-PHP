@@ -3,6 +3,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: gainsboro;
 }
 
 ul {
@@ -18,11 +20,63 @@ ul {
 header {
     height: fit-content;
     width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    background: linear-gradient(#000, #000) no-repeat center bottom / 0 1px;
+    transition: background-size 0.1s;
+}
+
+a:hover {
+    background-size: 100% 1px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+    width: 90%;
+    height: auto;
+    max-width: 700px;
+    background-color: rgb(233, 233, 233);
+    justify-content: center;
+    gap: 10px;
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+form button {
+    width: 200px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+label {
+    bottom: 30px;
+}
+
+textarea {
+    min-height: 30px;
+    max-height: 250px;
+}
+
+select, input{
+    height: 30px;
+}
+
+h1 {
+    margin-top: 40px;
 }
 
 .card{
     gap: 5px;
     padding: 10px;
+    margin-right: 10px;
 }
 
 .card button {
@@ -35,6 +89,11 @@ header {
     justify-content: center;
     align-items: center;
     padding-bottom: 0.7em;
+    background: none;
+}
+
+.card button:hover {
+    animation: girar 0.3s forwards;
 }
 
 .modal[open] {
@@ -51,5 +110,35 @@ header {
     width: 80%;
     height: 100%;
     max-width: 700px;
-    max-height: 70dvh;
+    max-height: 60dvh;
+}
+
+.urgente {
+    border: 1px solid red;
+    background-color: rgb(255, 227, 227);
+}
+
+.mediano {
+    border: 1px solid rgb(255, 187, 0);
+    background-color: rgb(255, 248, 227);
+}
+
+.básico {
+    border: 1px solid rgb(30, 255, 0);
+    background-color: rgb(232, 255, 227);
+}
+
+@keyframes girar {  
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-90deg);
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    form {
+        margin-top: 40dvh;
+    }
 }

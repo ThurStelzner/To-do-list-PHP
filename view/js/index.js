@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 listaTarefas.innerHTML = '';
                 tarefas.forEach(tarefa => {
                     const card = document.createElement('div');
-                    card.classList.add('card', 'mb-4');
+                    card.classList.add('card', 'mb-4', tarefa.tipo);
                     card.innerHTML = `
                         <button commandFor='${tarefa.id}' command='show-modal'>...</button>
                         <h3>${tarefa.nome}</h3>
-                        <span>${tarefa.descricao}</span>
                         <strong>${tarefa.tipo}</strong>
-                        <p>Até: ${tarefa.dataTermino}</p>
+                        <span>${tarefa.descricao}</span>
                         <p>Criado em: ${tarefa.dataCriado}</p>
+                        <p>Até: ${tarefa.dataTermino}</p>
                     `
                     listaTarefas.appendChild(card);
                 });
