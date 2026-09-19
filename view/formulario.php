@@ -5,7 +5,7 @@
     <form id="formTarefas">
         <input type="hidden" id="tarefaId">
         <label for="nome">Nome da tarefa</label>
-        <input type="text" name="nome" id="nome" require>
+        <input type="text" name="nome" id="nome" required>
         <label for="descricao">Descreva a tarefa</label>
         <textarea id="descricao" name="descricao"></textarea>
         <label for="tipo">Qual o tipo da tarefa?</label>
@@ -15,7 +15,7 @@
             <option value="2">Urgente</option>
         </select>
         <label for="dataTermino">Tarefa a ser realisada até</label>
-        <input type="datetime-local" id="dataTermino" name="dataTermino" require>
+        <input type="datetime-local" id="dataTermino" name="dataTermino" required>
         <button type="submit">Enviar</button>
     </form>
     <script src="js/index.js"></script>

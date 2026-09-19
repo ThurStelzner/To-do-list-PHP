@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 listaTarefas.innerHTML = '';
                 tarefas.forEach(tarefa => {
                     const card = document.createElement('div');
-                    card.classList.add('card');
+                    card.classList.add('card', 'mb-4');
                     card.innerHTML = `
+                        <button commandFor='${tarefa.id}' command='show-modal'>...</button>
                         <h3>${tarefa.nome}</h3>
                         <span>${tarefa.descricao}</span>
                         <strong>${tarefa.tipo}</strong>
                         <p>Até: ${tarefa.dataTermino}</p>
                         <p>Criado em: ${tarefa.dataCriado}</p>
-                        <button commandFor='${tarefa.id}' command='show-modal'>...</button>
                     `
                     listaTarefas.appendChild(card);
                 });
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.classList.add('modal');
                     modal.id = (tarefa.id);
                     modal.innerHTML = `
-                        <button commandFor='${tarefa.id}' command='close' class='btn-close'>X</button>
+                        <button commandFor='${tarefa.id}' command='close' class='btn-close'></button>
                         <button onclick="window.location.href = 'view/formulario.php?id=${tarefa.id}'">Editar Tarefa</button>
                         <button onclick="deletarTarefa(${tarefa.id})">Excluir</button>
                     `;

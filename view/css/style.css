@@ -1,136 +1,55 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --text: #000;
-    --bg: #fff;
+body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 ul {
     list-style: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-body {
+    padding-left: 0;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100dvh;
-    background-color: var(--bg);
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 15px;
 }
 
 header {
-    height: 60px;
+    height: fit-content;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-bottom: 1px solid var(--text);
-    text-align: center;
 }
 
-header a {
-    color: var(--text);
-    padding: 5px;
-    border-radius: 20px;
-}
-
-header a:hover {
-    background-color: #0011ff1a;
-}
-
-header ul {
-    margin-top: 5px;
-}
-
-header li {
-    padding: 3px;
-}
-
-#listaTarefas {
-    max-width: 600px;
-    width: 90%;
-    height: 67dvh;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-}
-
-h1 {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-}
-
-.card {
-    width: 98%;
-    padding: 30px;
-    border-radius: 10px;
-    border-bottom: 5px solid rgb(51, 43, 0);
-    background-color: rgba(255, 217, 0, 0.13);
-    margin-top: 10px;
+.card{
+    gap: 5px;
+    padding: 10px;
 }
 
 .card button {
-    position: relative;
-    left: 99%;
-    top: -90px;
-    background: rgba(0, 0, 0, 0.2);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-self: flex-end;
     border: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
-
-.card h3 {
-    font-size: 25px;
-    position: relative;
-    left: -10px;
-    top: -10px;
-}
-
-.card strong {
-    position: static;
-    left: 270px;
-    top: 70px;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.7em;
 }
 
 .modal[open] {
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 50px;
-    gap: 10px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: -10px 10px 30px black;
-}
-
-.modal button {
-    position: relative;
-    top: -10px;
-}
-
-.modal .btn-close {
-    width: 30px;
-    position: relative;
-    top: -30px;
-    left: -30px;
-}
-
-footer {
-    margin-top: 10px;
-    position: absolute;
-    bottom: 0;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    border-top: 1px solid var(--text);
-    padding: 10px;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#listaTarefas{
+    width: 80%;
+    height: 100%;
+    max-width: 700px;
+    max-height: 70dvh;
 }
