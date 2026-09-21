@@ -64,8 +64,11 @@ form button {
 }
 
 form button:hover {
-    background-color: rgb(82, 82, 82);
     transform: translateY(5px);
+}
+
+form button:active {
+    background-color: rgb(82, 82, 82);
 }
 
 label {
