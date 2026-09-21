@@ -54,6 +54,18 @@ form button {
     display: flex;
     align-self: center;
     justify-content: center;
+    border: none;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    transform: translateY(10px);
+}
+
+form button:hover {
+    background-color: rgb(82, 82, 82);
+    transform: translateY(5px);
 }
 
 label {
