@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.id = (tarefa.id);
                     modal.innerHTML = `
                         <button commandFor='${tarefa.id}' command='close' class='btn-close'></button>
-                        <button onclick="window.location.href = 'view/formulario.php?id=${tarefa.id}'">Editar Tarefa</button>
-                        <button onclick="deletarTarefa(${tarefa.id})">Excluir</button>
+                        <button onclick="window.location.href = 'view/formulario.php?id=${tarefa.id}'" class='btn btn-warning'>Editar Tarefa</button>
+                        <button onclick="deletarTarefa(${tarefa.id})" class='btn btn-link'>Excluir</button>
                     `;
                     listaTarefas.appendChild(modal);
                 })

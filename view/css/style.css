@@ -20,7 +20,7 @@ ul {
 header {
     height: fit-content;
     width: 100%;
-    position: fixed;
+    position: sticky;
     top: 0;
 }
 
@@ -47,6 +47,7 @@ form {
     padding: 30px;
     border-radius: 5px;
     border: 1px solid gray;
+    margin-top: 70px;
 }
 
 form button {
@@ -88,6 +89,16 @@ h1 {
     margin-top: 40px;
 }
 
+footer {
+    margin-top: auto;
+    height: 40px;
+    width: 100%;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card{
     gap: 5px;
     padding: 10px;
@@ -111,8 +122,22 @@ h1 {
     animation: girar 0.3s forwards;
 }
 
+.modal {
+    border: 2px solid gray;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.modal .btn-close{
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+}
+
 .modal[open] {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -141,6 +166,14 @@ h1 {
 .básico {
     border: 1px solid rgb(30, 255, 0);
     background-color: rgb(232, 255, 227);
+}
+
+.btn-link {
+    color: red;
+}
+
+.btn-link:hover {
+    color: rgb(70, 0, 0);
 }
 
 @keyframes girar {  
